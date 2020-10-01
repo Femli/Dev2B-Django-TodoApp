@@ -18,7 +18,7 @@ from django.urls import path, include
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('hello/', include('list.urls')), ## The include function is looking for the /listurls.py file that contains all our views
+    path('home/', include('list.urls')), ## The include function is looking for the /listurls.py file that contains all our views
 ]
 
 
