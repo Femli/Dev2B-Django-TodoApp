@@ -28,3 +28,12 @@ def choice(request, menu_id):
         option = "Veggie"
         price = "$3.50"
     return HttpResponse("You have selected a {0} dog! The total will be {1}".format(option, price))
+
+def hello(request):
+    return render(request, 'list/index.html')
+
+def home(request):
+    return render(request, 'list/homepage.html')
+
+def contactus(request):
+    return render(request, 'list/contactus.html')
