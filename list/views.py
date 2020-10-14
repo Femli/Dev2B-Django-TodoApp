@@ -37,3 +37,9 @@ def home(request):
 
 def contactus(request):
     return render(request, 'list/contactus.html')
+
+def services(request):
+    return render(request, 'list/services.html')
+
+def child(request):
+    return render(request, 'list/child.html')
