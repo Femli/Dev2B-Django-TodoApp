@@ -1,5 +1,9 @@
 {% include 'list/template.html' %}
 
 {% block content %}
-<p> This is my services page </p>
+<p>This is my services page {{first_name}} {{last_name}}</p>
 {% endblock %}
+
+{% for game in top_three_games %}
+<p>{{game}}</p>
+{% endfor %}

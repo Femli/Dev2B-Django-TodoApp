@@ -39,7 +39,11 @@ def contactus(request):
     return render(request, 'list/contactus.html')
 
 def services(request):
-    return render(request, 'list/services.html')
+    first = "Franco"
+    last = "Sanchez"
+    top_three = ["Pokemon", "God of War", "League of Legends"]
+    context = {'first_name':first, 'last_name':last, 'top_three_games':top_three} #We need to store the variables we want to pass into a dictionary, it's the only way DTL can render it
+    return render(request, 'list/services.html', context)
 
 def child(request):
     return render(request, 'list/child.html')
