@@ -4,16 +4,6 @@ from datetime import datetime
 
 ## The functions below will provide specific view to our application
 
-
-## Example 1 - hello word with the current time
-def index(request): ## keep the name of this view function in mind, as it will be imported in another file 
-    now = datetime.now()
-    current_time = now.strftime("%H:%M:%S")
-    return HttpResponse("Hello World! \n The current time is: %s" % (current_time))
-
-def potatoes(request):
-    return HttpResponse("Potatoes are good!")
-
 def hotdog(request):
     return HttpResponse("Welcome to my hotdog shack! Please select one of the following dogs: 1) Regular 2) Mexican Style 3) Veggie")
 
@@ -29,15 +19,6 @@ def choice(request, menu_id):
         price = "$3.50"
     return HttpResponse("You have selected a {0} dog! The total will be {1}".format(option, price))
 
-def hello(request):
-    return render(request, 'list/index.html')
-
-def home(request):
-    return render(request, 'list/homepage.html')
-
-def contactus(request):
-    return render(request, 'list/contactus.html')
-
 def services(request):
     first = "Franco"
     last = "Sanchez"
@@ -45,5 +26,21 @@ def services(request):
     context = {'first_name':first, 'last_name':last, 'top_three_games':top_three} #We need to store the variables we want to pass into a dictionary, it's the only way DTL can render it
     return render(request, 'list/services.html', context)
 
-def child(request):
-    return render(request, 'list/child.html')
+## rendering our tasks view
+from .models import *
+from .forms import *
+from django.shortcuts import redirect
+
+def taskview(request):
+    tasks = Task.objects.all()
+
+    form = TaskForm()
+
+    if request.method == "POST":
+        form = TaskForm(request.POST)
+        if form.is_valid():
+            form.save()
+        return redirect('/')
+
+    context = {'tasks': tasks, 'form': form}
+    return render(request, 'list/services.html', context)
