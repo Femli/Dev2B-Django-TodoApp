@@ -1,14 +1,7 @@
 {% include 'list/template.html' %}
 
-{% block content %}
-<p>This is my services page {{first_name}} {{last_name}}</p>
-{% endblock %}
-
-{% for game in top_four_games %}
-<p>{{game}}</p>
-{% endfor %}
-
-<form>
+<form method="POST" action="/">
+    {% csrf_token %}
     {{form}}
     <input type="submit" value="Create Task">
 </form>
