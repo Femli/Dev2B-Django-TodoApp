@@ -1,0 +1,7 @@
+<h3>Update Task</h3>
+
+<form method="POST" action=""> <!-- this will allow us to actually deliver changes to our tasks in the database -->
+    {% csrf_token %} <!-- security token -->
+    {{form}} <!-- this form will contain the task attributes we can update -->
+    <input type="submit" value="Update Task">
+</form>
