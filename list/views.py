@@ -23,3 +23,17 @@ def index(request):
     context = {'tasks': tasks, 'form': form}
 
     return render(request, 'list/services.html', context)
+
+def updateTask(request, pk): # 'pk' is going to be the primary key, which is the row id in the database, of our tasks
+    task = Task.objects.get(id=pk) # we will use this to order our tasks, and make the url routing dynamic
+
+    form = TaskForm(instance=task) # use a pre-populated form with the task info from our database
+
+    if request.method == 'POST':
+        form = TaskForm(request.POST, instance=task) # use a pre-populated form with the task info from our database
+        if form.is_valid():
+            form.save()
+        return redirect('/') # return back home :)
+
+    context = {'form': form}
+    return render(request, 'list/update.html', context)

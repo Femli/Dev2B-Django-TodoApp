@@ -7,5 +7,6 @@
 </form>
 
 {% for task in tasks %}
+    <a href="{% url 'update_tasks' task.id %}">Update</a>
     <p>{{task}}</p>
 {% endfor %}
