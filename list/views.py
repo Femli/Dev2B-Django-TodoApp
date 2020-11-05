@@ -10,6 +10,7 @@ from .models import *
 from .forms import *
 
 def index(request):
+
     tasks = Task.objects.all()
     form = TaskForm()
 
@@ -23,26 +24,26 @@ def index(request):
 
     return render(request, 'list/services.html', context)
 
-def updateTask(request, pk): #'pk' is going to be the 'primary key', which is the row id in the database, of our tasks.
-    task = Task.objects.get(id=pk) # We will use this to order our tasks, and make the url route dynamic to each task
+def updateTask(request, pk): # 'pk' is going to be the primary key, which is the row id in the database, of our tasks
+    task = Task.objects.get(id=pk) # we will use this to order our tasks, and make the url routing dynamic
 
-    form = TaskForm(instance=task) #the 'instance=task' allows us to pre-fill a form with our task attributes
+    form = TaskForm(instance=task) # use a pre-populated form with the task info from our database
 
     if request.method == 'POST':
-        form = TaskForm(request.POST, instance=task) # we don't want to create a new form, but rather use the already populated form with our task attributes
+        form = TaskForm(request.POST, instance=task) # use a pre-populated form with the task info from our database
         if form.is_valid():
             form.save()
-        return redirect('/')
+        return redirect('/') # return back home :)
 
-    context = {'form':form}
+    context = {'form': form}
     return render(request, 'list/update.html', context)
 
 def deleteTask(request, pk):
-    item = Task.objects.get(id=pk) # this will allow us to pass the title of our task, so we can confirm it's deletion
+    item = Task.objects.get(id=pk)
 
-    if request.method == "POST":
+    if request.method == 'POST':
         item.delete() # this will remove the task from our database
         return redirect('/')
-
-    context = {'item':item}
+        
+    context = {'item': item}
     return render(request, 'list/delete.html', context)

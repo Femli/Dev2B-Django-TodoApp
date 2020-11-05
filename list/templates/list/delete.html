@@ -1,8 +1,6 @@
-<h3>Are you sure you want to delete "{{item}}"?</h3> 
-<!-- Want to give the user the option to confirm their task deletion-->
+<h3>Are you sure you want to delete "{{item}}"</h3>
 
 <a href="{% url 'tasks' %}">Cancel</a>
-<!-- If they change their mind, they can go back to the homepage without changes-->
 
 <form method="POST" action="">
     {% csrf_token %}
