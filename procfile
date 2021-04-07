@@ -1,0 +1,1 @@
+web: gunicorn Dev2B-Django-TodoApp.wsgi --log-file -
