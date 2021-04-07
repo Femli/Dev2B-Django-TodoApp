@@ -25,7 +25,7 @@ SECRET_KEY = '6c5=dkc8@*9ceq1_tf1r$doj%nwu_z2m)&a4d*e2w*f-5^vt^0'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = False
 
-ALLOWED_HOSTS = ['127.0.0.1','sampledomain.com']
+ALLOWED_HOSTS = ['127.0.0.1', 'wit-django-todoapp.herokuapp.com']
 
 
 # Application definition
